@@ -37,7 +37,7 @@ public class JuegoUtils {
         do{
             try {
                 answer = sc.nextFloat();
-                ok = (answer >= min || answer <= max);
+                ok = (answer >= min && answer <= max);
             } catch (Exception e){
                 sc.nextLine();
             }
