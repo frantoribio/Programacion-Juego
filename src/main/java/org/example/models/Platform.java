@@ -4,7 +4,7 @@ public enum Platform {
 
     PC,
     XBOX,
-    PLAY,
-    SWITCH;
+    PLAYSTATION,
+    SWITCH
 
 }

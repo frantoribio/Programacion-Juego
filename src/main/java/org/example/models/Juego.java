@@ -15,7 +15,7 @@ public class Juego {
     public Juego(String title, float price, String platform){
 
         setPlatform(platform);
-        this.title = title;
+        this.title = title.toUpperCase(Locale.ROOT);
         this.price = price;
 
     }
@@ -23,7 +23,7 @@ public class Juego {
     public Juego(String title, float price, Platform platform){
 
         this.platform = platform;
-        this.title = title;
+        this.title = title.toUpperCase(Locale.ROOT);
         this.price = price;
 
     }
@@ -68,5 +68,11 @@ public class Juego {
         }
 
         this.platform = platform;
+    }
+
+    public String toString(){
+        return "{Juego- Titulo: "+ title +
+                ", Plataforma: "+ platform +
+                ", Precio: "+ price + "}";
     }
 }

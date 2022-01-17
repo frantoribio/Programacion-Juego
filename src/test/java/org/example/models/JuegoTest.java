@@ -24,9 +24,11 @@ public class JuegoTest {
     @Test
     public void testSetTitle() {
 
+        String correctValue = "Mario Bros";
+        String emptyValue = "";
         Assertions.assertAll(
-            () -> assertDoesNotThrow(() -> j.setTitle("mario bros")),
-            () -> assertThrowsExactly(IllegalArgumentException.class, () -> j.setTitle(""))
+            () -> assertDoesNotThrow(() -> j.setTitle(correctValue)),
+            () -> assertThrowsExactly(IllegalArgumentException.class, () -> j.setTitle(emptyValue))
         );
 
     }
@@ -41,10 +43,13 @@ public class JuegoTest {
     @Test
     public void testSetPrice() {
 
+        float correctValue = 8f;
+        float belowLimitValue = -70f;
+        float overLimitValue = 400f;
         Assertions.assertAll(
-                () -> assertDoesNotThrow(() -> j.setPrice(8f)),
-                () -> assertThrowsExactly(IllegalArgumentException.class, () -> j.setPrice(-70f)),
-                () -> assertThrowsExactly(IllegalArgumentException.class, () -> j.setPrice(400f))
+                () -> assertDoesNotThrow(() -> j.setPrice(correctValue)),
+                () -> assertThrowsExactly(IllegalArgumentException.class, () -> j.setPrice(belowLimitValue)),
+                () -> assertThrowsExactly(IllegalArgumentException.class, () -> j.setPrice(overLimitValue))
         );
     }
 
@@ -58,11 +63,15 @@ public class JuegoTest {
     @Test
     public void testSetPlatform() {
 
+        String correctValue = "xbox";
+        Platform correctPlatform = Platform.PLAYSTATION;
+        String stringCorrectedValue = "    xbox    ";
+        String wrongValue = "gameboy";
         Assertions.assertAll(
-                () -> assertDoesNotThrow(() -> j.setPlatform("xbox")),
-                () -> assertDoesNotThrow(() -> j.setPlatform(Platform.PLAY)),
-                () -> assertDoesNotThrow(() -> j.setPlatform("    XBox  ")),
-                () -> assertThrowsExactly(IllegalArgumentException.class, () -> j.setPlatform("gameboy"))
+                () -> assertDoesNotThrow(() -> j.setPlatform(correctValue)),
+                () -> assertDoesNotThrow(() -> j.setPlatform(correctPlatform)),
+                () -> assertDoesNotThrow(() -> j.setPlatform(stringCorrectedValue)),
+                () -> assertThrowsExactly(IllegalArgumentException.class, () -> j.setPlatform(wrongValue))
         );
     }
 

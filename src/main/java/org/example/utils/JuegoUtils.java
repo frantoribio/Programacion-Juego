@@ -4,6 +4,7 @@ import org.example.models.Platform;
 
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.Random;
 
 public class JuegoUtils {
 
@@ -58,6 +59,24 @@ public class JuegoUtils {
         } while (!ok);
 
         return answer;
+    }
+
+    public static String randomTitle(){
+        Random r = new Random();
+        String[] titles = {"Mario","Call of duty","Kirby","League of legends","Clash royal","monster hunter"};
+        int index = r.nextInt(titles.length);
+        return titles[index];
+    }
+
+    public static float randomPrice(){
+        Random r = new Random();
+        return ((float)r.nextInt(20000)) / 100;
+    }
+
+    public static Platform randomPlatform(){
+        Random r = new Random();
+        int index = r.nextInt(Platform.values().length);
+        return Platform.values()[index];
     }
 
 }
