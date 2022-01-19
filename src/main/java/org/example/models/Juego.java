@@ -73,6 +73,7 @@ public class Juego {
     public String toString(){
         return "{Juego- Titulo: "+ title +
                 ", Plataforma: "+ platform +
-                ", Precio: "+ price + "}";
+                ", Precio: "+ price +"}";
     }
+
 }

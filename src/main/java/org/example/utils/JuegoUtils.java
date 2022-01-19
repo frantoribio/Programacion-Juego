@@ -2,64 +2,9 @@ package org.example.utils;
 
 import org.example.models.Platform;
 
-import java.util.Locale;
-import java.util.Scanner;
 import java.util.Random;
 
 public class JuegoUtils {
-
-    public static Platform tryNextPlatform(){
-
-        Scanner sc = new Scanner(System.in);
-        String answer;
-        boolean ok = false;
-        Platform platform = null;
-
-        do{
-            answer = sc.nextLine();
-
-            try {
-                platform = Platform.valueOf(answer.toUpperCase(Locale.ROOT).trim());
-                ok = true;
-            } catch (Exception e){
-                sc.nextLine();
-            }
-
-        } while (!ok);
-        return platform;
-    }
-
-    public static float tryNextFloat(float min, float max){
-
-        Scanner sc = new Scanner(System.in);
-        float answer = min-1;
-        boolean ok = false;
-
-        do{
-            try {
-                answer = sc.nextFloat();
-                ok = (answer >= min && answer <= max);
-            } catch (Exception e){
-                sc.nextLine();
-            }
-        } while (!ok);
-        return answer;
-    }
-
-    public static String tryNextString(){
-
-        Scanner sc = new Scanner(System.in);
-        String answer;
-        boolean ok;
-
-        do{
-            answer = sc.nextLine();
-            answer = answer.trim().toUpperCase(Locale.ROOT);
-            ok = !answer.equals("");
-        } while (!ok);
-
-        return answer;
-    }
 
     public static String randomTitle(){
         Random r = new Random();
@@ -69,14 +14,34 @@ public class JuegoUtils {
     }
 
     public static float randomPrice(){
-        Random r = new Random();
-        return ((float)r.nextInt(20000)) / 100;
+        int rNum = (int)Utils.rNum(100, 0);
+        float price;
+        if(rNum < 10){
+            price = 0;
+        } else if(rNum < 50) {
+            price = Utils.rNum(40,20);
+        } else {
+            price = Utils.rNum(100, 50);
+        }
+        return price;
     }
 
     public static Platform randomPlatform(){
-        Random r = new Random();
-        int index = r.nextInt(Platform.values().length);
-        return Platform.values()[index];
+        int rNum = (int)Utils.rNum(100, 0);
+        Platform platform;
+        if(rNum < 10){
+            platform = Platform.SWITCH;
+        } else if(rNum < 30) {
+            platform = Platform.XBOX;
+        } else if(rNum < 60){
+            platform = Platform.PC;
+        } else {
+            platform = Platform.PLAYSTATION;
+        }
+        return platform;
     }
 
+    public static int randomStock(){
+        return (int)Utils.rNum(50, 1);
+    }
 }

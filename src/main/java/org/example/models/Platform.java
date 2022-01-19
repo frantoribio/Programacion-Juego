@@ -5,6 +5,13 @@ public enum Platform {
     PC,
     XBOX,
     PLAYSTATION,
-    SWITCH
+    SWITCH;
 
+    public static String allValues(){
+        String st = "";
+        for (Platform p:Platform.values()) {
+            st += p + ", ";
+        }
+        return st;
+    }
 }

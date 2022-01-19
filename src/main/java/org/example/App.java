@@ -1,8 +1,11 @@
 package org.example;
 
 import org.example.Builder.JuegoBuilder;
+import org.example.Builder.StockBuilder;
 import org.example.models.Juego;
 import org.example.models.Platform;
+import org.example.models.Stock;
+import org.example.models.Tienda;
 import org.example.utils.JuegoUtils;
 
 
@@ -10,22 +13,24 @@ public class App {
 
     public static void main( String[] args ) {
 
-        Juego[] tienda = new Juego[3];
+        Tienda t = new Tienda();
 
-        //From builder example
-        tienda[0] = new Juego("Super mario bros", 60f, Platform.SWITCH);
-        //From input Example
-        tienda[1] = JuegoBuilder.inputBuild();
-        //Random example
-        tienda[2] = JuegoBuilder.randomBuild();
+        t.setName("pepe shop");
 
-        print(tienda);
+        randomizeShop(t);
+
+        t.addGame(StockBuilder.inputBuilder());
+
+        t.printStock();
 
     }
 
-    static void print(Juego[] tienda){
-        for (Juego juego:tienda) {
-            System.out.println(juego);
+    static void randomizeShop(Tienda t){
+
+        for (int i = 0; i < 30; i++) {
+            Stock s = StockBuilder.randomBuild();
+            t.addGame(s);
         }
+
     }
 }
