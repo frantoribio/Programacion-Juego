@@ -1,12 +1,8 @@
 package org.example;
 
-import org.example.Builder.JuegoBuilder;
 import org.example.Builder.StockBuilder;
-import org.example.models.Juego;
-import org.example.models.Platform;
 import org.example.models.Stock;
 import org.example.models.Tienda;
-import org.example.utils.JuegoUtils;
 
 
 public class App {
@@ -19,10 +15,29 @@ public class App {
 
         randomizeShop(t);
 
-        t.addGame(StockBuilder.inputBuilder());
+        System.out.println("before sort");
+        t.printAll();
 
-        t.printStock();
+        t.sortByPrice();
 
+        System.out.println("after sort price");
+        t.printAll();
+
+        t.sortByTitle();
+        System.out.println("after sort title");
+        t.printAll();
+
+        t.sortByPlatform();
+        System.out.println("after sort platform");
+        t.printAll();
+
+        t.sortByStock();
+        System.out.println("after sort stock");
+        t.printAll();
+
+        t.reverse();
+        System.out.println("reversed");
+        t.printAll();
     }
 
     static void randomizeShop(Tienda t){

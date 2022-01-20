@@ -6,11 +6,13 @@ import java.util.Random;
 
 public class JuegoUtils {
 
+    private final static String[] TITLES = {"Mario","Call of duty","Kirby","League of legends","Clash royal","Monster hunter","Advance wars","Nintendogs","God of war","Plants vs zombies","Cuphead","Bomberman","Wii fit","Autochess","Valorant","Team Fights Tactics","Zelda","Mega Man","Metroid Dread","Duck Hunt","Ratchet and clank"};
+
+
     public static String randomTitle(){
         Random r = new Random();
-        String[] titles = {"Mario","Call of duty","Kirby","League of legends","Clash royal","monster hunter"};
-        int index = r.nextInt(titles.length);
-        return titles[index];
+        int index = r.nextInt(TITLES.length);
+        return TITLES[index];
     }
 
     public static float randomPrice(){
@@ -39,9 +41,5 @@ public class JuegoUtils {
             platform = Platform.PLAYSTATION;
         }
         return platform;
-    }
-
-    public static int randomStock(){
-        return (int)Utils.rNum(50, 1);
     }
 }

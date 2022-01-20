@@ -70,10 +70,43 @@ public class Juego {
         this.platform = platform;
     }
 
-    public String toString(){
-        return "{Juego- Titulo: "+ title +
-                ", Plataforma: "+ platform +
-                ", Precio: "+ price +"}";
+    @Override
+    public String toString() {
+        return "Juego{" +
+                "title='" + title + '\'' +
+                ", price=" + price +
+                ", platform=" + platform +
+                '}';
     }
 
+    public int compareToTtitle(Juego juego){
+        int length = this.title.length();
+        if(juego.title.length() < this.title.length()){
+            length = juego.title.length();
+        }
+
+        for (int i = 0; i < length; i++) {
+            if(this.title.charAt(i) > juego.title.charAt(i)){
+                return 1;
+            } else if(this.title.charAt(i) < juego.title.charAt(i)){
+                return -1;
+            }
+        }
+
+        return 0;
+    }
+
+    public int compareToPrice(Juego juego){
+        if(price > juego.getPrice()){
+            return 1;
+        } else if(price < juego.getPrice()){
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    public int compareToPlatform(Juego juego){
+        return platform.compareTo(juego.getPlatform());
+    }
 }

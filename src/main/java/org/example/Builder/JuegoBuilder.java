@@ -25,7 +25,7 @@ public class JuegoBuilder {
     public static Juego randomBuild(){
 
         String title = JuegoUtils.randomTitle();
-        float price = JuegoUtils.randomPrice();
+        float price = ((float)Math.round(JuegoUtils.randomPrice() * 100)) / 100;
         Platform platform = JuegoUtils.randomPlatform();
 
         return new Juego(title, price, platform);

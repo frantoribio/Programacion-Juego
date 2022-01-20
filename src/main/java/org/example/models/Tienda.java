@@ -1,23 +1,26 @@
 package org.example.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import org.example.*;
+import org.example.utils.Utils;
 
 public class Tienda {
 
     private String name;
-    private List<Stock> storage = new ArrayList<>();
+    private ArrayList<Stock> storage = new ArrayList<>();
 
     public Tienda(){
     }
 
-    Tienda(String name, List<Stock> storage){
+    Tienda(String name, ArrayList<Stock> storage){
         this.name = name;
         this.storage = storage;
     }
 
-    public List<Stock> getGames() {
+    public ArrayList<Stock> getGames() {
         return storage;
     }
 
@@ -32,7 +35,7 @@ public class Tienda {
         this.name = name.trim().toUpperCase(Locale.ROOT);
     }
 
-    public void setGames(List<Stock> games) {
+    public void setGames(ArrayList<Stock> games) {
         if (games.size() == 0){
             throw new IllegalArgumentException("Empty game list not allowed");
         }
@@ -56,14 +59,14 @@ public class Tienda {
 
     public String toString(){
 
-        String st = "";
+        StringBuilder st = new StringBuilder();
         int index = 0;
         for(Stock game: storage){
             index++;
-            st += index + "- "+game.getGame().toString() + "\n";
+            st.append(index).append("- ").append(game.getGame().toString()).append("\n");
         }
 
-        return st;
+        return st.toString();
     }
 
     public void printStock(){
@@ -81,6 +84,12 @@ public class Tienda {
             count += g.getAmount();
         }
         return count;
+    }
+
+    public void printAll(){
+        for (Stock s: storage) {
+            System.out.println(s);
+        }
     }
 
     private float getXboxPer(){
@@ -138,4 +147,27 @@ public class Tienda {
         }
         return count;
     }
+
+    public void sortByPrice(){
+        storage.sort(Stock::compareToPrice);
+    }
+
+    public void sortByTitle(){
+        storage.sort(Stock::compareToTitle);
+    }
+
+    public void sortByPlatform(){
+        storage.sort(Stock::compareToPlatform);
+    }
+
+    public void sortByStock() { storage.sort(Stock::compareToStock); }
+
+    public void reverse() {
+
+        int size = storage.size();
+        for (int i = 0; i < (size/2); i++) {
+            Collections.swap(storage,i,(size - 1 - i));
+        }
+    }
+
 }

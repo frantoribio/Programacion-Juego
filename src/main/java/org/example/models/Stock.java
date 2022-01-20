@@ -1,13 +1,16 @@
 package org.example.models;
 
-public class Stock {
+public class Stock extends Juego {
 
     Juego game;
     int amount;
 
     public Stock(Juego game, int amount){
-        this.amount = amount;
+
+        super();
         this.game = game;
+        this.amount = amount;
+
     }
 
     public Juego getGame() {
@@ -17,4 +20,35 @@ public class Stock {
     public int getAmount() {
         return amount;
     }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "game=" + game +
+                ", amount=" + amount +
+                '}';
+    }
+
+    public int compareToPrice(Stock s){
+        return this.game.compareToPrice(s.getGame());
+    }
+
+    public int compareToTitle(Stock s){
+        return this.game.compareToTtitle(s.getGame());
+    }
+
+    public int compareToPlatform(Stock s){
+        return this.game.compareToPlatform(s.getGame());
+    }
+
+    public int compareToStock(Stock s){
+        if(amount > s.getAmount()){
+            return 1;
+        } else if(amount < s.getAmount()){
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
 }

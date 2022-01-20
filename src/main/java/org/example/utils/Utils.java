@@ -1,9 +1,10 @@
 package org.example.utils;
 
 import org.example.models.Platform;
+import org.example.models.Stock;
+import org.example.models.Tienda;
 
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Utils {
 
@@ -80,4 +81,5 @@ public class Utils {
     public static float rNum(int max , int min){
         return ((float)(Math.random()*(max-min)))+ min;
     }
+
 }
