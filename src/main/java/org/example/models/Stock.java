@@ -42,13 +42,7 @@ public class Stock extends Juego {
     }
 
     public int compareToStock(Stock s){
-        if(amount > s.getAmount()){
-            return 1;
-        } else if(amount < s.getAmount()){
-            return -1;
-        } else {
-            return 0;
-        }
+        return Integer.compare(amount, s.getAmount());
     }
 
 }

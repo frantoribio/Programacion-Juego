@@ -97,13 +97,7 @@ public class Juego {
     }
 
     public int compareToPrice(Juego juego){
-        if(price > juego.getPrice()){
-            return 1;
-        } else if(price < juego.getPrice()){
-            return -1;
-        } else {
-            return 0;
-        }
+        return Float.compare(price, juego.getPrice());
     }
 
     public int compareToPlatform(Juego juego){

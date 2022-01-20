@@ -2,10 +2,7 @@ package org.example.models;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Locale;
-import org.example.*;
-import org.example.utils.Utils;
 
 public class Tienda {
 

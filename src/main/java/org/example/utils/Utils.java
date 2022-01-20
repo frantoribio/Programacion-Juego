@@ -1,8 +1,6 @@
 package org.example.utils;
 
 import org.example.models.Platform;
-import org.example.models.Stock;
-import org.example.models.Tienda;
 
 import java.util.*;
 
